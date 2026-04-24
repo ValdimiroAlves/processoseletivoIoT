@@ -24,7 +24,7 @@ modo_auto = True
 ultimo_estado_botao = 1
 tempo_ultimo_print = time.ticks_ms()
 
-# Variáveis para o Encerramento Automático
+# Variáveis para o Encerramento Automático 
 ciclos_execucao = 0
 LIMITE_CICLOS = 200 
 
