@@ -92,7 +92,7 @@ while True:
         # CONTROLE DE ENCERRAMENTO AUTOMÁTICO
         ciclos_execucao += 1
         if ciclos_execucao >= LIMITE_CICLOS:
-            print("\n Tempo de teste atingido. Encerrando simulação com sucesso.")
+            print("Teste")
             sys.exit() 
 
         time.sleep(0.05)
