@@ -26,7 +26,7 @@ tempo_ultimo_print = time.ticks_ms()
 
 # Variáveis para o Encerramento Automático 
 ciclos_execucao = 0
-LIMITE_CICLOS = 200 
+LIMITE_CICLOS = 100 
 
 def ler_lux():
     #Calcula o Lux
