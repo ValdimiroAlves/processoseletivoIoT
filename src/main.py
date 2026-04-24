@@ -16,7 +16,7 @@ ldr.atten(ADC.ATTN_11DB)
 # Constantes do Sensor 
 GAMMA = 0.7
 RL10 = 50
-
+ 
 # ==========================================
 # 2. VARIÁVEIS DE CONTROLE E TEMPO
 # ========================================== 
