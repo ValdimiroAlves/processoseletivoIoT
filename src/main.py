@@ -19,7 +19,7 @@ RL10 = 50
 
 # ==========================================
 # 2. VARIÁVEIS DE CONTROLE E TEMPO
-# ==========================================
+# ========================================== 
 modo_auto = True
 ultimo_estado_botao = 1
 tempo_ultimo_print = time.ticks_ms()
