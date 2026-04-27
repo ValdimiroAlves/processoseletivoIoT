@@ -257,7 +257,12 @@ O sistema simula um ambiente onde o sensor monitora a luz (Lux) e decide o estad
 
 <img width="400" height="283" alt="image" src="https://github.com/user-attachments/assets/624a3399-fdef-422e-a347-b53be7c8d00d" />
 
+
 <img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/a89df254-c907-41a7-9023-cede9ffd6a83" />
+
+
+<img width="376" height="176" alt="image" src="https://github.com/user-attachments/assets/b14debd7-930c-48ff-b66e-fc2ddcd4683f" />
+
 
 
 
