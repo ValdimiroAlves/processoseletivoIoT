@@ -314,6 +314,7 @@ Os componentes definidos no `diagram.json` e utilizados no sistema são:
 **Funcionamento:** O sistema alterna entre os modos Automático e Manual com precisão instantânea.
 
 **Requisitos Atendidos:** A lógica de acionamento (LED ON se Lux < 100) funciona conforme o esperado.
+
 ---
 
 ## 6️⃣ Comentários Adicionais
@@ -324,11 +325,11 @@ Os componentes definidos no `diagram.json` e utilizados no sistema são:
 
 **2- Expansão da Interface Física:** Adicionar um segundo botão para separar as responsabilidades de controle:
 
-**- Botão A:** Alternaria exclusivamente entre os modos "Automático" e "Manual".
+- **Botão A:** Alternaria exclusivamente entre os modos "Automático" e "Manual".
 
-**- Botão B: **Atuaria apenas no modo Manual para ligar/apagar o LED. Isso evitaria que a luz mudasse de estado acidentalmente no momento em que o usuário troca o modo de operação.
+- **Botão B:** Atuaria apenas no modo Manual para ligar/apagar o LED. Isso evitaria que a luz mudasse de estado acidentalmente no momento em que o usuário troca o modo de operação.
 
-**3- Histerese de Controle: **Implementar uma margem de segurança (ex: liga com 80 Lux, desliga com 120 Lux) para evitar que o LED pisque rapidamente quando a luz ambiente estiver exatamente no limite do limiar de decisão.  
+**3- Histerese de Controle:** Implementar uma margem de segurança (ex: liga com 80 Lux, desliga com 120 Lux) para evitar que o LED pisque rapidamente quando a luz ambiente estiver exatamente no limite do limiar de decisão.  
 
 ---
 
