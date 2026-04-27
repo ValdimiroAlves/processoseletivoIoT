@@ -244,71 +244,86 @@ Preencha todas as seções abaixo de forma **clara, objetiva e técnica**.
 
 ### 👤 Identificação do Candidato
 
-- **Nome completo:**  
-- **GitHub:**  
+- **Nome completo: Valdimiro Alves dos Snatos Neto**  
+- **GitHub: https://github.com/ValdimiroAlves**  
 
 ---
 
 ## 1️⃣ Visão Geral da Solução
 
-Descreva, em poucas palavras:
+O projeto consiste em um Sistema de Iluminação Inteligente com Interrupção Manual. O objetivo é automatizar a ativação de uma luz ambiente com base na luminosidade externa, garantindo eficiência energética e conforto.
 
-- Qual é o objetivo do seu projeto  
-- O que o sistema embarcado simulado faz  
-- Como o usuário interage com ele (se aplicável)
+O sistema simula um ambiente onde o sensor monitora a luz (Lux) e decide o estado do LED ligado/desligado (Modo Automático). O usuário pode interagir através de um botão físico para assumir o controle total (Modo Manual), permitindo ligar ou desligar a luz independentemente da leitura do sensor.
+
+<img width="400" height="283" alt="image" src="https://github.com/user-attachments/assets/624a3399-fdef-422e-a347-b53be7c8d00d" />
+
+<img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/a89df254-c907-41a7-9023-cede9ffd6a83" />
+
+
 
 ---
 
 ## 2️⃣ Arquitetura do Sistema Embarcado
 
-Explique a arquitetura lógica do seu projeto, abordando:
+A arquitetura foi desenhada para ser reativa e não-bloqueante, utilizando uma estrutura de Máquina de Estados Finita (FSM) simples:
 
-- Fluxo principal do programa (`main.py`)  
-- Estrutura de estados, loops ou temporizações  
-- Como os componentes interagem entre si  
+**Fluxo Principal (_main.py_):** O código roda em um loop contínuo que processa três pilares: leitura de periféricos, lógica de controle e telemetria.
 
-Se desejar, utilize tópicos ou um pequeno diagrama em texto.
+**Estrutura de Estados:** A variável _modo_auto _(booleana) define o estado do sistema.
+
+- No estado **True**, o LED responde ao sensor LDR.
+
+- No estado **False**, o LED responde apenas aos eventos de clique do botão.
+
+**Temporização Não-Bloqueante:** Utilização de _time.ticks_ms()_ para o envio de logs a cada 5 segundos, garantindo que o processador nunca pare de monitorar o botão (evitando o uso de _time.sleep_ longos).
+
+**Interação:** O sensor fornece os dados de entrada, o processador (ESP32) aplica a lógica de estado e o LED atua como saída visual do sistema.
 
 ---
 
 ## 3️⃣ Componentes Utilizados na Simulação
 
-Liste os principais componentes definidos no `diagram.json`, por exemplo:
+Os componentes definidos no `diagram.json` e utilizados no sistema são:
 
-- Tipo de placa utilizada  
-- LEDs, botões, sensores, atuadores, etc.  
-- Função de cada componente no sistema  
+**Placa ESP32 DevKitC V4:** Microcontrolador principal responsável pelo processamento e execução do firmware em MicroPython.
 
+**Sensor de Luz LDR (Photoresistor):** Responsável por captar a variação de luz ambiente.
+
+**LED:** Simula a lâmpada/atuador de iluminação.
+
+**Botão (Pushbutton):** Atua como o interruptor de troca de modo e controle manual.
 ---
 
 ## 4️⃣ Decisões Técnicas Relevantes
 
-Explique brevemente decisões importantes tomadas durante o desenvolvimento, como:
+**Fórmula de Lux Real:** Em vez de usar valores brutos, o código implementa uma função matemática baseada em logaritmo para converter a tensão em Lux real, aumentando a precisão da automação.
 
-- Organização do código  
-- Uso de funções, estados ou constantes  
-- Estratégias para temporização ou controle lógico  
+**Debounce de Software:** Implementação de uma verificação de estado e pequeno delay para evitar leituras falsas causadas pelo ruído mecânico do botão.
+
+**Organização: **Uso de constantes para parâmetros físicos (GAMMA, RL10) e funções modulares para facilitar a manutenção. 
 
 ---
 
 ## 5️⃣ Resultados Obtidos
 
-Descreva o comportamento final do sistema:
+**Funcionamento:** O sistema alterna entre os modos Automático e Manual com precisão instantânea.
 
-- O que funciona corretamente  
-- Quais requisitos foram atendidos  
-- Resultado observado na simulação do Wokwi  
-
+**Requisitos Atendidos:** A lógica de acionamento (LED ON se Lux < 100) funciona conforme o esperado.
 ---
 
-## 6️⃣ Comentários Adicionais (Opcional)
+## 6️⃣ Comentários Adicionais
 
-Utilize este espaço para comentar, se desejar:
+**Melhorias que eu faria com mais tempo:**
 
-- Dificuldades encontradas  
-- Limitações da solução  
-- Melhorias que você faria com mais tempo  
-- Principais aprendizados durante o desafio  
+**1- Refinamento da Função de Lux:** Calibrar a função matemática ler_lux. Garantindo que o valor calculado no código seja idêntico ao valor teórico mostrado no simulador.
+
+**2- Expansão da Interface Física:** Adicionar um segundo botão para separar as responsabilidades de controle:
+
+**- Botão A:** Alternaria exclusivamente entre os modos "Automático" e "Manual".
+
+**- Botão B: **Atuaria apenas no modo Manual para ligar/apagar o LED. Isso evitaria que a luz mudasse de estado acidentalmente no momento em que o usuário troca o modo de operação.
+
+**3- Histerese de Controle: **Implementar uma margem de segurança (ex: liga com 80 Lux, desliga com 120 Lux) para evitar que o LED pisque rapidamente quando a luz ambiente estiver exatamente no limite do limiar de decisão.  
 
 ---
 
