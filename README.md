@@ -8,7 +8,7 @@ Esta atividade tem como objetivo avaliar suas competências em **Sistemas Embarc
 > 🎯 **Objetivo principal**  
 > Avaliar sua capacidade de **planejar, estruturar e desenvolver** uma solução funcional de sistemas embarcados, seguindo boas práticas de engenharia.
 
----
+---  
 
 ## 🏁 Passo 0 – Antes de Tudo
 
